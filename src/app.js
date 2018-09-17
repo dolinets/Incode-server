@@ -1,11 +1,12 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const config = require('config');
 
+const clients = require('./clients');
 
 const app = express();
 
 app.use(express.static('public'));
+app.use('/api', require('./router'));
 
 app.listen(config.server.port, () => {
     console.log(`app started at port ${config.server.port}`);
